@@ -6,13 +6,22 @@ Wrangle WeRateDogs Twitter data to create interesting and trustworthy analyses a
 > 3. Whats are the top 5 underrated and overrated breeds of dogs? (being underrated means got the low scores from WeRateDogs but got high retweet counts and vice versa)?
 
 ## Data Wrangling
+
+### Packages to install
+Can be installed via conda or pip,
+- pandas
+- NumPy
+- requests
+- tweepy
+- json
+
 ### Gather
-    - Enhanced Twitter Archive data contains basic tweet data given by Udacity
-    - Twitter API to gather retweet count and favorite count, which are notable columns
-    - Image Predictions File, containing the predicted breeds of dogs given by Udacity
+- Enhanced Twitter Archive data contains basic tweet data given by Udacity
+- Twitter API to gather retweet count and favorite count, which are notable columns
+- Image Predictions File, containing the predicted breeds of dogs given by Udacity
     
-   #### Limitations:
-       - Enhanced archive data contains basic tweet data (tweet ID, timestamp, text, etc.) of their tweets as they stood on August 1, 2017.
+#### Limitations:
+       Enhanced archive data contains basic tweet data (tweet ID, timestamp, text, etc.) of their tweets as they stood on August 1, 2017.
        
 ### Assess
 Assess data for:
