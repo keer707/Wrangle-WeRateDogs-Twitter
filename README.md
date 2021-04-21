@@ -1,5 +1,7 @@
 # WeRateDogs Twitter Analysis
 
+The dataset to be wrangled( and analyzed and visualized) is the tweet archive of Twitter user [@dog_rates](https://twitter.com/dog_rates), also known as [WeRateDogs](https://en.wikipedia.org/wiki/WeRateDogs), which is a Twitter account that rates people's dogs with a humorous comment about the dog. These ratings almost always have a denominator of 10. The numerators, though? Almost always greater than 10. 11/10, 12/10, 13/10, etc.
+
 Wrangle WeRateDogs Twitter data to create interesting and trustworthy analyses and visualizations by investigating,
 > 1. Which breed of dogs got the highest retweet counts and favorite counts?
 > 2. Does the ratings impact retweet and favorite counts?
@@ -21,7 +23,8 @@ Can be installed via conda or pip,
 - Image Predictions File, containing the predicted breeds of dogs given by Udacity
     
 #### Limitations:
-       Enhanced archive data contains basic tweet data (tweet ID, timestamp, text, etc.) of their tweets as they stood on August 1, 2017.
+- Enhanced archive data contains basic tweet data (tweet ID, timestamp, text, etc.) of their tweets as they stood on August 1, 2017.
+- Only original ratings (no retweets) that have images are considered.
        
 ### Assess
 Assess data for:
