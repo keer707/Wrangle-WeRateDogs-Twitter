@@ -18,9 +18,9 @@ Can be installed via conda or pip,
 - json
 
 ### Gather
-- Enhanced Twitter Archive data contains basic tweet data given by Udacity
-- Twitter API to gather retweet count and favorite count, which are notable columns
-- Image Predictions File, containing the predicted breeds of dogs given by Udacity
+- Enhanced Twitter Archive data contains basic tweet data given by Udacity.
+- Twitter API to gather retweet count and favorite count, which are notable columns, additionally details about hashtags used.
+- Image Predictions File, containing the predicted breeds of dogs given by Udacity.
     
 #### Limitations:
 - Enhanced archive data contains basic tweet data (tweet ID, timestamp, text, etc.) of their tweets as they stood on August 1, 2017.
@@ -28,7 +28,7 @@ Can be installed via conda or pip,
        
 ### Assess
 Assess data for:
-- Quality: inconsistent data, inaccurate data, non-descriptive headers, missing values (NAN)
+- Quality: inconsistent data, inaccurate data, non-descriptive headers, missing values (NAN).
 - Tidiness: issues with structure that prevent easy analysis. Tidy data requirements: Each variable forms a column. Each observation forms a row. Each type of observational unit forms a table.
 
 Types of assessment:
