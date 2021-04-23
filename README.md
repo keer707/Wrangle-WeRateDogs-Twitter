@@ -3,9 +3,15 @@
 The dataset to be wrangled( and analyzed and visualized) is the tweet archive of Twitter user [@dog_rates](https://twitter.com/dog_rates), also known as [WeRateDogs](https://en.wikipedia.org/wiki/WeRateDogs), which is a Twitter account that rates people's dogs with a humorous comment about the dog. These ratings almost always have a denominator of 10. The numerators, though? Almost always greater than 10. 11/10, 12/10, 13/10, etc.
 
 Wrangle WeRateDogs Twitter data to create interesting and trustworthy analyses and visualizations by investigating,
-> 1. Which breed of dogs got the highest retweet counts and favorite counts?
-> 2. Does the ratings impact retweet and favorite counts?
-> 3. Whats are the top 5 underrated and overrated breeds of dogs? (being underrated means got the low scores from WeRateDogs but got high retweet counts and vice versa)?
+> 1. What are the top 30 most tweeted dog breeds by WeRateDogs?
+> 2. Which breed of dogs got the highest rating on average?
+> 3. Which breed of dogs got the highest retweet and favorite counts on average?
+> 4. Which stage of dogs got the highest rating, retweet and favorite counts?
+> 5. Does the hashtags included impact retweet and favorite counts?
+> 6. How does retweet and favorite counts spread based on the tweeted day of the week on average ?
+> 7. Does the rating impact Retweet and Favorite Count?
+> 8. Relationship between Retweet and Favorite Count
+
 
 ## Data Wrangling
 
@@ -16,6 +22,11 @@ Can be installed via conda or pip,
 - requests
 - tweepy
 - json
+- re
+- string
+- datetime
+- matplotlib
+- seaborn
 
 ### Gather
 - Enhanced Twitter Archive data contains basic tweet data given by Udacity.
