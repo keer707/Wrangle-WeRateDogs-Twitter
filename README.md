@@ -51,3 +51,14 @@ Programmatic data cleaning process:
 - Define: convert the assessments into defined cleaning tasks.
 - Code: convert those definitions to code and run that code.
 - Test: test your dataset, visually or with code, to make sure cleaning operations worked.
+
+#### Wrangle Report
+
+> - [Wrangle Report](https://rpubs.com/keer707/759807)
+
+#### Act Report
+
+> - [What are the other factors that impact Re-tweet & Favorite Count?](https://rpubs.com/keer707/WeRateDogs_tweet-factor_blog)
+
+> - [Which is a SUPER-WOW breed](https://rpubs.com/keer707/WeRateDogs_tweet-breed_blog)
+
