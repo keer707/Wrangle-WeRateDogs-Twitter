@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/760155/e843e545f85643b2aaf247157c9ea9e6
+bundleId: https://api.rpubs.com/api/v1/document/760155/e843e545f85643b2aaf247157c9ea9e6
+url: http://rpubs.com/keer707/760155
+when: 1619380040.70674
+lastSyncTime: 1619380040.70674

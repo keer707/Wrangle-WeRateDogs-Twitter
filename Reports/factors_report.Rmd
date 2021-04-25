@@ -1,0 +1,180 @@
+---
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    collapse: yes
+    highlight: tango
+    includes:
+      in_header: factor_hero-image.html
+      after_body: footer.html
+    number_sections: no
+    smooth_scroll: yes
+    theme: flatly
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,message=FALSE)
+```
+
+# How do WeRateDogs rates dogs?
+
+<a style="text-decoration: none" href="https://twitter.com/dog_rates" target="_blank">**WeRateDogs**</a> is a Twitter account that asks people to send photos of their dogs, then tweets on selected photos, gives rating and a humorous comment. Dogs are rated on a scale of one to ten, but are invariably given ratings in excess of the maximum, such as 13/10, 14/10., etc. Why? Because,
+
+<center><font size="5" style="font-family: times, serif; font-style:italic"><a style="text-decoration: none" href="https://knowyourmeme.com/memes/theyre-good-dogs-brent" target="_blank">they're good dogs Brent</a></font></center>
+
+![](Images/brent.jpg)
+
+Popular posts are re-posted on Instagram and Facebook. But, how do we measure whether a post is popular or not? Here comes the two notable features,
+
+> * <font size="3">Re-tweet Count
+> * Favorite Count</font>
+
+WeRateDogs team receives 800 to 1,000 submissions daily and they work to narrow them down to about one high-quality piece of dog content per day. What are the factors that these tweets may get higher Re-tweet & Favorite Count <a class="fa fa-paw"></a>
+
+# Various Factors
+
+## 1. Rating
+
+### Breeds with Highest Rating
+
+The following graph shows the **top rated** breeds on average, which have been tweeted 14 times at least.
+
+<center>
+
+![](Images/rating_circular.jpg){width=70%}
+
+</center>
+
+> * <font size="3">Noticable top 5 rated breeds are, **Samoyed, Golden Retriever, Great Pyrenees, Pembroke, and Chow** in order</font>
+
+### Is Samoyed Super-WOW <i class="fa fa-paw"></i>
+
+Does the breed with highest rating is most likely to have highest Re-tweet and Favorite Count? To find this, the following Heat Map Visualization helps to check the correlation between Rating, Re-tweet and Favorite Count.
+
+<center>
+
+![](Images/heat.jpg){width=60%}
+
+</center>
+
+> * <font size="3">The correlation between Rating and either of Re-tweet or Favorite Count is very low</font>
+
+So, the chances of other breed being Re-tweeted and Favored most is high.
+
+### Here comes the WOW breed
+
+Let's check on average Re-tweet and Favorite Count for top 15 breed. The breed being re-tweeted and favored most on average is considered as <font style="font-family: times, serif; font-style:italic,bold">[WOW](#wow)</font> breed. 
+
+![](Images/retweet.jpg)
+
+In order to avoid the chance of outliers, I have calculated average re-tweet and favorite count for the breeds, which have been tweeted 14 times at least. Among them, top 15 breed is shown in the  above graph. <br><br>
+
+
+<div class='col2'>
+
+<a id="wow" class="fa fa-paw" style="font-size:30px"></a>
+
+<center><font size="5" style="font-family: times, serif; font-style:italic;justify-content: center;align-items: center">Here, comes the <br> **[Super WOW - French Bulldog](#wow)** <br> with highest average Re-tweet Count (4585) and average Favorite Count (18083) approximately.</font>
+
+![](Images/french01.jpg)
+</center>
+
+</div>
+
+> * <font size="3">Therefore, **Rating** is **very less likely** to impact **Re-tweet and Favorite Count**</font>
+
+## 2. Stages of Dog
+### Different Stages of Dog
+
+The Dogtionary explains the various stages of dog: doggo, pupper, puppo, and floof(er) (via the [#WeRateDogs book](https://www.amazon.com/WeRateDogs-Most-Hilarious-Adorable-Youve/dp/1510717145) on Amazon)
+
+<br>
+
+<center>
+
+![](Images/dogtionary-combined.jpg)
+
+</center>
+
+<br>
+
+I have analyzed whether the various stages of dog with at least 10 tweets each, impacts the re-tweet & favorite count on average. 
+
+<br>
+
+<center>
+
+![](Images/stage.jpg){width=50%}
+
+</center>
+
+> * <font size="3">It is evident that **Stages** do impact the **Re-tweet and Favorite Count** on average, where as favored count had an greater impact</font>
+
+## 3. Hashtags
+### Do Hashtag increase popularity?
+
+Generally, hashtags do have a greater impact in popularity. Some of the commonly used hashtags by WeRateDogs are, #BarkWeek, #notallpuppers, #dogsatpollingstations, etc.,
+
+The following graphical image shows the average re-tweet and favorite count based on hashtag added in the tweets.
+
+<br>
+
+<center>
+
+![](Images/hashtag.jpg){width=50%}
+
+</center>
+
+> * <font size="3">Hashtag has increased the popularity to a greater extent. There is a drastic change in **Favorite Count** on average</font>
+
+## 4. Day of the Week
+
+How does the tweeted day of the week spreads out the Re-tweet & Favorite Count?
+
+<br>
+
+<center>
+
+![](Images/dayweek.jpg){width=50%}
+
+</center>
+
+> * <font size="3">**Retweet and Favorite Count on average** increases gradually from **Monday** - **Wednesday**
+> * Sudden drop in **Retweet and Favorite Count** in **Mid-Week (Thursday)** on average</font>
+> * <font size="3">Gradually increases again before slight drop on **Sunday**</font>
+
+## 5. Relationship between Re-tweets & Favorites
+
+Typically, more the re-tweet more the favorites and vice verse. The graphical representation shows the **strong** relationship between re-tweets and favorites.
+
+<center>
+
+![](Images/reg.jpg){width=70%}
+
+</center>
+
+## Conclusion
+
+The factors that greatly impacts the Re-tweets and Favorites are,
+
+> * <font size="3">Breed
+> * Stages of Dog</font>
+> * <font size="3">Hashtags</font>
+
+<br>
+
+<font style="font-family: times, serif; font-style:italic;">**Further Read : <a style="text-decoration: none" href="https://rpubs.com/keer707/WeRateDogs_tweet-breed_blog" target="_blank">Which is a SUPER-WOW breed <i class="fa fa-paw"></i></a>**</font>
+<br>
+
+## Additional Info
+
+For further information about the Project,
+
+* <a style="text-decoration: none" href="https://github.com/keer707/Wrangle-WeRateDogs-Twitter" target="_blank">Wrangle-WeRateDogs-Twitter - Repository</a> (Github Repository)
+* <a style="text-decoration: none" href="https://github.com/keer707/Wrangle-WeRateDogs-Twitter/blob/master/wrangle_act.ipynb" target="_blank">Wrangle-WeRateDogs-Twitter - Wrangle Act</a> (Jupyter Notebook File)
+* <a style="text-decoration: none" href="https://rpubs.com/keer707/759807" target="_blank">Wrangle-WeRateDogs-Twitter - Wrangle Report</a> (Wrangle Report)
+ 
+

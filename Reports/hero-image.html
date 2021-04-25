@@ -1,0 +1,101 @@
+<style type="text/css">
+
+.col2 {
+    columns: 2 350px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 350px; /* chrome, safari */
+    -moz-columns: 2 350px;    /* firefox */
+  }
+  
+.hero-image {
+    position: relative;
+    margin-bottom: 2em;
+    /* liner gradient tints the image darker for readability*/
+    background-image: linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.2) ), url(https://lh3.googleusercontent.com/YvYR_RMpwEfBHORtDXoZni96SBtD_A8xcRO2Ma8XFUseZEpn88Lr6B-r-HG8U5YMuU9P90Swxd0kHFBrNDe0RGquz0f63r9V5XLbz4XWsc3E9dh0g4rTTfu_dxGsc9Bys5petFBNWyc=w2400); 
+    height: 425px;
+    background-size: cover;
+    background-color: #141c25f2;
+    background-position: center center;
+    display: flex; /* Change to `display: none` for no hero image */
+    justify-content: center-left;
+    align-items: center;
+}
+
+.top-text {
+  position: relative;
+  font-size: 34px;
+  padding-bottom: 0.5em
+  text-transform: uppercase;
+  text-align: left;
+  display: block; /* Change to `display: none` for no top text */
+  color: #ffffff72;
+  margin-left : 3rem;
+  margin-top : 5rem;
+}
+
+.middle-text {
+  position: relative;
+  letter-spacing: 0.065em;
+  line-height: 1em;
+  font-size: 68px;
+  text-align: left;
+  display: block; /* Change to `display: none` for no bottom text */
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  margin-left : 3rem;
+  font-weight: bold;
+}
+
+.bottom-text {
+  position: relative;
+  font-size: 16px;    
+  text-align: left;
+  display: block; /* Change to `display: none` for no top text */
+  color: #ffffff82;
+  margin-left : 3rem;
+  margin-top : 8rem;
+}
+
+.row {
+    margin-left: -85px;
+    margin-right: -15px;
+	display: flex;
+}
+
+.tocify {     
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  width: 100% !important;
+  border: none;
+}
+
+@media screen and (max-width: 767px){
+
+  .col-xs-12.col-sm-4.col-md-3 {
+    display: none;
+  }
+  
+  .top-text {
+    font-size: 25px;
+  }
+
+  .middle-text {
+    font-size: 40px;
+  }
+  
+  .bottom-text {
+    font-size: 15px;
+  }
+  
+}
+
+</style>
+<div class="hero-image"> 
+        <div class="image-text">
+          <div class="top-text">From WeRateDogs Tweet,</div>
+            <div class="middle-text">Which is a</div>
+			<div class="middle-text">"SUPER - WOW"</div>
+			<div class="middle-text">dog breed <i class="fa fa-paw" style="color:white"></i></div>
+			<div class="bottom-text">By Keerthana Manoharan on 25 April, 2021</div>
+        </div>
+</div>

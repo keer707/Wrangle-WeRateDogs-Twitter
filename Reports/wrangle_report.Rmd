@@ -1,0 +1,194 @@
+---
+title: "Wrangle and Analyse - WeRateDogs Tweets"
+author: "Keerthana Manoharan"
+date: "24 April, 2021"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    collapse: yes
+    highlight: tango
+    includes:
+      after_body: footer.html
+    number_sections: no
+    smooth_scroll: yes
+    theme: spacelab
+    toc: yes
+    toc_float: yes
+subtitle: Udacity - Data Analyst Nanodegree
+---
+<style type="text/css">
+.row {
+    margin-left: -85px;
+    margin-right: -15px;
+}
+
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Wrangle Report
+## Synopsis
+
+Along the process of **Data Wrangling** of tweet data from the Twitter user [`@dog_rates`][dog_rates] also known as [WeRateDogs][wiki], I have found several issues in the **Quality** and **Structure** of data collected by different means.
+
+I have analyzed, cleaned and combined all the data into a new DataFrame. And stored it in `twitter_archive_master.csv` file.
+
+> <font size="2.5">**Note :** The version of file is from the First Iteration of Wrangling. This is not totally free of issues.</font>
+
+[dog_rates]: https://twitter.com/dog_rates
+[wiki]: https://en.wikipedia.org/wiki/WeRateDogs
+
+## Introduction
+
+This Wrangle Report is a part of a [Data Analyst Nanodegree][nd002_link] offered by Udacity. The project aims to gather data from Twitter API and Udacity provided tweet data, to create analysis about the tweets and the predicted dog's breed.
+
+
+**Data Wrangling follows**,
+
+>* <font size="2.5">Data Gathering</font>
+>* <font size="2.5">Data Assessing
+>* Data Cleaning
+</font>
+
+
+
+[nd002_link]: https://classroom.udacity.com/nanodegrees/nd002/dashboard/overview
+
+## 1. Data Gathering
+
+I have gathered the files [`twitter_archive_enhanced.csv`][twitter_archive] and [`image_predictions.tsv`][img_pred], which are provided by Udacity using the `requests` package,  
+
+The `twitter_archive_enhanced.csv` file contains basic tweet data (tweet ID, timestamp, text, etc.) for 2356 of their tweets as they stood on August 1, 2017. As I need further information from the WeRateDogs user, I have gathered data from **Twitter API** using the `tweepy` package and stored it as `text_json.txt` for the above mentioned period (querying by `tweet_id` present in `twitter_archive_enhanced.csv`)
+
+I have extracted some features like `retweet_count`, `favorite_count` and `hashtag` from the json and stored it in separate file named `retweet_favorite_count.csv`
+
+The gathered data are loaded into three different DataFrame,
+
+> * <font size="2.5">`archive`                 :  Loaded data from `twitter_archive_enhanced.csv`</font>
+> * <font size="2.5">`img_pred`                :  Loaded data from `image_predictions.tsv`
+> * `retweet_favorite_count`  :  Loaded data from `retweet_favorite_count.csv`</font>
+
+[twitter_archive]: https://video.udacity-data.com/topher/2018/November/5bf60fbf_twitter-archive-enhanced/twitter-archive-enhanced.csv
+[img_pred]: https://d17h27t6h515a5.cloudfront.net/topher/2017/August/599fd2ad_image-predictions/image-predictions.tsv
+
+## 2. Data Assessing
+
+The two types of Data Assessment performed,
+
+>* <font size="2.5">Visual assessment: Each piece of gathered data is displayed in the Jupyter Notebook. Once displayed, data are additionally assessed in an external application (Excel)
+>* Programmatic assessment: pandas' functions and/or methods are used to assess the data.</font>
+
+**Legend:**
+
+> * <font size="2.5">Method : **V** (Visual) / **P** (Programmatic)
+> * Issue Type : **Q** (Quality) / **T** (Tidiness)</font>
+
+<center><strong>Table 1 - Summary of Issues Identified.</strong></center>
+
+<font size="2.5">
+
+|Issue ID|Table|Issue Type|Dimension|Method|Column|Description|
+|:---:|:--:|:---:|:---:|:----:|:----:|:--------------------------------:|
+|1|archive|Q|Validity|P|tweet_id|Type int instead of string.|
+|2|img_pred|Q|Validity|P|tweet_id|Type int instead of string.|
+|3|retweet_favorite_count|Q|Validity|P|tweet_id|Type int instead of string.|
+|4|archive|Q|Validity|P|timestamp|Type string instead of timestamp|
+|5|archive|Q|Accuracy|V|rating_numerator|Surprising values in rating_numerator column.|
+|6|archive|Q|Accuracy|V|rating_denominator|Surprising values in rating_denominator.|
+|7|archive|Q|Consistency|V|rating_numerator<br>rating_denominator|Inconsistent rating.|
+|8|archive|Q|Consistency|P|expanded_urls|sometimes have more than one value separated by comma (,).|
+|9|archive|Q|Validity|V|name|Invalid names or non-standard names.|
+|10|archive|Q|Consistency|P|text|'&amp' and '\\n' symbol present.|
+|11|archive|T|-|P|source|HTML tags, URL, and content in a single column.|
+|12|archive|T|-|V|doggo, floofer,<br>pupper, and puppo|These are categorical variable, but represented as separate column.|
+|13|archive|T|-|P|text|There is two information in a single column,the text and the URL.|
+|14|img_pred|Q|Consistency|V|p1, p2, and p3|Dog's breed has no standard. Capital letter or lowercase names. Separated by _/-.|
+|15|img_pred|T|-|V|p1, p2, and p3|One Prediction data with TRUE and higher confidence is enough among the top three predictions.|
+|16|archive,<br>img_pred,<br>retweet_favorite_count|T|-|P|tweet_id|Duplicate column in three DataFrame.|
+|17|archive,<br>img_pred,<br>retweet_favorite_count|T|-|P|"all"|Number of Observations differ.`archive`(2356),`img_pred`(2075), `retweet_favorite_count`(2331 - as some tweet ID status is not available now).|
+|18|archive|Q|Completeness|V|in_reply_to_status_id, in_reply_to_user_id,<br>retweeted_status_timestamp, retweeted_status_id, retweeted_status_user_id|Only original ratings (no retweets/reply) must be considered(as per project requirement). Uninterested columns present.|
+|19|archive|Q|Completeness|P|in_reply_to_status_id, in_reply_to_user_id|Observations for Uninterested reply columns present(78).|
+|20|archive|Q|Completeness|P|retweeted_status_timestamp,<br>retweeted_status_id,<br>retweeted_status_user_id|Observations for Uninterested retweet columns present(181).|
+</font>
+
+
+
+## 3. Data Cleaning
+
+**First Step:** I have copied all the three DataFrames using `.copy()` method,
+
+> * <font size="2.5"> archive_copy = archive.copy()</font>
+> * <font size="2.5">img_pred_copy = img_pred.copy()
+> * ret_fav_hash_copy = retweet_favorite_count.copy()</font>
+
+**Further Steps:**
+
+* I have dropped the Uninterested observations for Reply(78) and Retweet(181) by their index. And those features were also dropped.
+
+* For Erroneous data types, I have converted it using `.astype()` method for `tweet_id` and `pd.to_datetime()` method for `timestamp`
+
+* For the surprising `rating_numerator` and `rating_denominator`, I have done `text` scraping for corresponding observation. From the text, it was observed that some observations had inaccurate rating and changed it manually. For tweets without any rating, gave default rating as 10/10. And some other high values is true and are due to tweeter has given ratings to group of dogs present in the post as the sample shown below.
+<center>
+
+### {.tabset}
+
+#### Figure a
+
+<center>
+
+![](Images/twitter1.jpg){width=50%}
+
+</center>
+
+#### Figure b
+
+<center>
+
+![](Images/twitter2.jpg){width=50%}
+
+</center>
+
+### {.end}
+
+</center>
+
+* In order to solve the consistency problem of rating, I have performed **Feature Engineering**, where
+<center>
+> <font size="2.5"><strong>rating = rating_numerator / rating_denominator</strong></font>
+</center>
+
+* From `img_pred_copy`, I have selected one Prediction data with TRUE and higher confidence, bundled as `breed` and `confidence`. Remaining uninterested columns were dropped.
+
+* The dog's names issue was solved by replacing the values starting with lower case with 'None'.
+
+* Source name for `source` column was found using regex and replaced with the same. The URL in `text` column was removed using regex. '&amp' and '\\n' symbol replced with '&' and ' '.
+
+* I have removed the additional and duplicated URL from `expanded_urls` using `set()`.
+
+* I have capitalized the `breed` names using `string.capwords()`.
+
+* Finally, I have solved the tidiness issues by merging all the three data frames by `tweet_id` and stored it in master DataFrame `df`. I have also merged 4 columns (doggo, pupper, puppo, and floofer) into one, which I have bundled and named as `stage`. Where, some have more than one stage, I have done `text` scraping again and changed the stages manually if it is inaccurate.
+
+## Conclusions
+
+In First Iteration, I have documented 20 issues. But, this master data is not totally free of issues, as Data Wrangling is an iterative process.
+
+I have stored the wrangled data in `twitter_archive_master.csv` file with a minored number of issues, and ready for a Data Analysis. This file has 1964 observations and 16 features.
+
+### Additional Info
+
+For further information about the Project,
+
+* <a style="text-decoration: none" href="https://github.com/keer707/Wrangle-WeRateDogs-Twitter" target="_blank">Wrangle-WeRateDogs-Twitter - Repository</a> (Github Repository)
+* <a style="text-decoration: none" href="https://github.com/keer707/Wrangle-WeRateDogs-Twitter/blob/master/wrangle_act.ipynb" target="_blank">Wrangle-WeRateDogs-Twitter - Wrangle Act</a> (Jupyter Notebook File)
+
+<br>
+
+<font style="font-family: times, serif; font-style:italic;">**Further Read : <a style="text-decoration: none" href="https://rpubs.com/keer707/WeRateDogs_tweet-breed_blog" target="_blank">Which is a SUPER-WOW breed <i class="fa fa-paw"></i></a>**</font>
+<br>
+
+<font style="font-family: times, serif; font-style:italic;">**Further Read : <a style="text-decoration: none" href="https://rpubs.com/keer707/WeRateDogs_tweet-factor_blog" target="_blank">What are the other factors that impact Re-tweet & Favorite Count?</a>**</font>
+<br>
