@@ -58,7 +58,8 @@ Programmatic data cleaning process:
 
 #### Act Report
 
+> - [Which is a SUPER-WOW breed](https://rpubs.com/keer707/WeRateDogs_tweet-breed_blog)
+
 > - [What are the other factors that impact Re-tweet & Favorite Count?](https://rpubs.com/keer707/WeRateDogs_tweet-factor_blog)
 
-> - [Which is a SUPER-WOW breed](https://rpubs.com/keer707/WeRateDogs_tweet-breed_blog)
 
