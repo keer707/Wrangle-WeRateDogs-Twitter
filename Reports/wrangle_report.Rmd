@@ -3,8 +3,6 @@ title: "Wrangle and Analyse - WeRateDogs Tweets"
 author: "Keerthana Manoharan"
 date: "24 April, 2021"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     collapse: yes
     highlight: tango
@@ -15,6 +13,8 @@ output:
     theme: spacelab
     toc: yes
     toc_float: yes
+  pdf_document:
+    toc: yes
 subtitle: Udacity - Data Analyst Nanodegree
 ---
 <style type="text/css">
@@ -103,10 +103,10 @@ The two types of Data Assessment performed,
 |9|archive|Q|Validity|V|name|Invalid names or non-standard names.|
 |10|archive|Q|Consistency|P|text|'&amp' and '\\n' symbol present.|
 |11|archive|T|-|P|source|HTML tags, URL, and content in a single column.|
-|12|archive|T|-|V|doggo, floofer,<br>pupper, and puppo|These are categorical variable, but represented as separate column.|
+|12|archive|Q|Consistency|V|doggo, floofer,<br>pupper, and puppo|These are categorical variable, but represented as separate column.|
 |13|archive|T|-|P|text|There is two information in a single column,the text and the URL.|
 |14|img_pred|Q|Consistency|V|p1, p2, and p3|Dog's breed has no standard. Capital letter or lowercase names. Separated by _/-.|
-|15|img_pred|T|-|V|p1, p2, and p3|One Prediction data with TRUE and higher confidence is enough among the top three predictions.|
+|15|img_pred|Q|Consistency|V|p1, p2, and p3|One Prediction data with TRUE and higher confidence is enough among the top three predictions.|
 |16|archive,<br>img_pred,<br>retweet_favorite_count|T|-|P|tweet_id|Duplicate column in three DataFrame.|
 |17|archive,<br>img_pred,<br>retweet_favorite_count|T|-|P|"all"|Number of Observations differ.`archive`(2356),`img_pred`(2075), `retweet_favorite_count`(2331 - as some tweet ID status is not available now).|
 |18|archive|Q|Completeness|V|in_reply_to_status_id, in_reply_to_user_id,<br>retweeted_status_timestamp, retweeted_status_id, retweeted_status_user_id|Only original ratings (no retweets/reply) must be considered(as per project requirement). Uninterested columns present.|
@@ -170,7 +170,9 @@ The two types of Data Assessment performed,
 
 * I have capitalized the `breed` names using `string.capwords()`.
 
-* Finally, I have solved the tidiness issues by merging all the three data frames by `tweet_id` and stored it in master DataFrame `df`. I have also merged 4 columns (doggo, pupper, puppo, and floofer) into one, which I have bundled and named as `stage`. Where, some have more than one stage, I have done `text` scraping again and changed the stages manually if it is inaccurate.
+* I have also merged 4 columns (doggo, pupper, puppo, and floofer) into one, which I have bundled and named as `stage`. Where, some have more than one stage, I have done `text` scraping again and changed the stages manually if it is inaccurate.
+
+* Finally, I have solved the tidiness issues by merging all the three data frames by `tweet_id` and stored it in master DataFrame `df`.
 
 ## Conclusions
 
