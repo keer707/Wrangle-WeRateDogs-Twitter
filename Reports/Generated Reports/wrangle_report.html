@@ -423,8 +423,8 @@ div.tocify {
 <tr class="even">
 <td align="center">12</td>
 <td align="center">archive</td>
-<td align="center">T</td>
-<td align="center">-</td>
+<td align="center">Q</td>
+<td align="center">Consistency</td>
 <td align="center">V</td>
 <td align="center">doggo, floofer,<br>pupper, and puppo</td>
 <td align="center">These are categorical variable, but represented as separate column.</td>
@@ -450,8 +450,8 @@ div.tocify {
 <tr class="odd">
 <td align="center">15</td>
 <td align="center">img_pred</td>
-<td align="center">T</td>
-<td align="center">-</td>
+<td align="center">Q</td>
+<td align="center">Consistency</td>
 <td align="center">V</td>
 <td align="center">p1, p2, and p3</td>
 <td align="center">One Prediction data with TRUE and higher confidence is enough among the top three predictions.</td>
@@ -552,7 +552,8 @@ div.tocify {
 <li><p>Source name for <code>source</code> column was found using regex and replaced with the same. The URL in <code>text</code> column was removed using regex. ‘&amp;amp’ and ‘\n’ symbol replced with ‘&amp;’ and ’ ’.</p></li>
 <li><p>I have removed the additional and duplicated URL from <code>expanded_urls</code> using <code>set()</code>.</p></li>
 <li><p>I have capitalized the <code>breed</code> names using <code>string.capwords()</code>.</p></li>
-<li><p>Finally, I have solved the tidiness issues by merging all the three data frames by <code>tweet_id</code> and stored it in master DataFrame <code>df</code>. I have also merged 4 columns (doggo, pupper, puppo, and floofer) into one, which I have bundled and named as <code>stage</code>. Where, some have more than one stage, I have done <code>text</code> scraping again and changed the stages manually if it is inaccurate.</p></li>
+<li><p>I have also merged 4 columns (doggo, pupper, puppo, and floofer) into one, which I have bundled and named as <code>stage</code>. Where, some have more than one stage, I have done <code>text</code> scraping again and changed the stages manually if it is inaccurate.</p></li>
+<li><p>Finally, I have solved the tidiness issues by merging all the three data frames by <code>tweet_id</code> and stored it in master DataFrame <code>df</code>.</p></li>
 </ul>
 </div>
 </div>
